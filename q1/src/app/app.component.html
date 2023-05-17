@@ -1,0 +1,121 @@
+<!-- Navigation Bar-->
+<section id="navigation">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark px-4">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigation-bar">
+            <span class="navbar-toggler-icon" style="color: #fff">&#9776;</span>
+          </button>
+
+          <a class="navbar-brand" href="#">
+            <i class="fas fa-home" style="font-size: 1em; color: #fff;"></i>
+          </a>
+
+          <div class="collapse navbar-collapse" id="navigation-bar">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item"><a class="nav-link" href="#statistic">STATISTICS</a></li>
+              <li class="nav-item"><a class="nav-link" href="#contact">CONTACT</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Header Image containing background image (in styles.css)-->
+<section id="header">
+</section>
+
+<!-- Statistics -->
+<section id="statistic">
+  <div class="container text-center">
+    <div class="row">
+      <div class="col text-left">
+        <h2>STATISTICS</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col text-center mb-3">
+        <form>
+          <div class="form-group">
+            <!-- Selection is Arizona by default, on change of state, function called to fetch data -->
+            <select (change)="stateChanged($event.target.value)" class="form-control" id="state">
+              <option selected value="Arizona">Arizona</option>
+              <option *ngFor="let state of states" value="{{state}}">{{state}}</option>
+            </select>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 md-3">
+        <div class="card card-latest">
+          <div class="card-body">
+            <!-- Daily Positive cases -->
+            <h3 class="card-title">LATEST DAILY CASES</h3>
+            <p class="card-text" [countUp]="data.cases">{{data.cases}}</p>
+            <p>Latest Number of daily cases of COVID-19</p>
+            <p>As of 7th March 2021</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 md-3">
+        <div class="card card-totpos">
+          <div class="card-body">
+            <!-- Total Positive cases in that state from start-->
+            <h3 class="card-title">TOTAL POSITIVE CASES</h3>
+            <p class="card-text" [countUp]="data.totcases">{{data.totcases}}</p>
+            <p>Total Positive cases of COVID-19</p>
+            <p>As of 7th March 2021</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 md-3">
+        <div class="card card-totdeath">
+          <div class="card-body">
+            <!-- Total Death cases in that state from start -->
+            <h3 class="card-title">TOTAL DEATH CASES</h3>
+            <p class="card-text" [countUp]="data.deaths">{{data.deaths}}</p>
+            <p>Total Death cases of COVID-19</p>
+            <p>As of 7th March 2021</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Chart for representing Data -->
+<section id="graph">
+  <div class="container">
+    <div class="row">
+      <div class="col chart-wrapper">
+        <canvas baseChart
+          [type]="barChartType"
+          [datasets]="barChartData"
+          [labels]="barChartLabels"
+        ></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer containing links to profile -->
+<footer class="bg-dark text-secondary px-4 py-5 text-center" id="contact">
+  <div class="col-lg-6 mx-auto pb-4">
+    <a href="#"><i class="fas fa-chevron-up fa-1x"></i></a>
+  </div>
+  <div class="d-grid gap-2 d-sm-flex pb-4 justify-content-sm-center">
+    <a href="https://github.com/Sidharth-Dinesh"><i class="fab fa-github fa-2x"></i></a>
+    <a href="https://www.linkedin.com/in/sidharth-dinesh/"><i class="fab fa-linkedin-in fa-2x"></i></a>
+  </div>
+  <div class="col-lg-6 mx-auto">
+    <br>
+    <br>
+    <p class="mb-4">Copyright © 2023 Sidharth Dinesh</p>
+    <br>
+    <br>
+  </div>
+</footer>

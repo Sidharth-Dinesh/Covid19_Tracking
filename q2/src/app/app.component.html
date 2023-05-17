@@ -1,0 +1,158 @@
+<!-- Navigation Bar-->
+<section id="navigation">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark px-4">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigation-bar">
+            <span class="navbar-toggler-icon" style="color: #fff">&#9776;</span>
+          </button>
+
+          <a class="navbar-brand" href="#">
+            <i class="fas fa-home" style="font-size: 1em; color: #fff;"></i>
+          </a>
+
+          <div class="collapse navbar-collapse" id="navigation-bar">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item"><a class="nav-link" href="#statistic">STATISTICS</a></li>
+              <li class="nav-item"><a class="nav-link" href="#postapi">DATA REQUESTS</a></li>
+              <li class="nav-item"><a class="nav-link" href="#contact">CONTACT</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Header Image containing background image (in styles.css)-->
+<section id="header">
+</section>
+
+<section id="statistic">
+  <div class="container text-center">
+    <div class="row">
+      <div class="col text-left">
+        <h2>STATISTICS</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col text-center mb-3">
+        <form>
+          <div class="form-group">
+            <!-- Selection is Arizona by default, on change of state, function called to fetch data -->
+            <select (change)="stateChanged($event.target.value)" class="form-control" id="state">
+              <option selected value="Arizona">Arizona</option>
+              <option *ngFor="let state of states" value="{{state}}">{{state}}</option>
+            </select>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 md-3">
+        <div class="card card-latest">
+          <div class="card-body">
+            <h3 class="card-title">POSITIVE CASES</h3>
+            <!-- Total positive cases in the latest 7 days -->
+            <p class="card-text" [countUp]="data.poscases">{{data.poscases}}</p>
+            <p>Number of positive cases of COVID-19</p>
+            <p>In the last 7 days (1st March 2021 - 7th March 2021)</p>
+            <!-- <p class="card-text">{{dailyData}}</p> -->
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 md-3">
+        <div class="card card-totpos">
+          <div class="card-body">
+            <h3 class="card-title">NEGATIVE CASES</h3>
+            <!-- Total negative cases in the latest 7 days -->
+            <p class="card-text" [countUp]="data.negcases">{{data.negcases}}</p>
+            <p>Number of negative cases of COVID-19</p>
+            <p>In the last 7 days (1st March 2021 - 7th March 2021)</p>
+            <!-- <p class="card-text">{{dailyData}}</p> -->
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 md-3">
+        <div class="card card-totdeath">
+          <div class="card-body">
+            <h3 class="card-title">DEATH CASES</h3>
+            <!-- Total death cases in the latest 7 days -->
+            <p class="card-text " [countUp]="data.deathcases">{{data.deathcases}}</p>
+            <p>Number of death cases of COVID-19</p>
+            <p>In the last 7 days (1st March 2021 - 7th March 2021)</p>
+            <!-- <p class="card-text">{{dailyData}}</p> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Requesting Details -->
+<section id="postapi">
+  <div class="container text-center">
+    <div class="row">
+      <div class="col text-left">
+        <h2>REQUEST DETAILS</h2>
+      </div>
+    </div>
+    <form id="forms">
+      <div class="row">
+        <div class="col-md-4 md-2">
+          <label for="inputState2">State</label>
+            <!-- Function called to fetch data -->
+          <select [(ngModel)]="stateSelect" [ngModelOptions]="{standalone: true}" class="form-control" id="state2">
+            <option selected value="Arizona">Arizona</option>
+            <option *ngFor="let state1 of states2" value="{{state1}}">{{state1}}</option>
+          </select>
+        </div>
+        <div class="col-md-4 md-2">
+          <label for="startDate">Start Date </label>
+          <!-- Start Date input by user -->
+          <input type="text" [(ngModel)]="startDate" [ngModelOptions]="{standalone: true}" class="form-control"
+            id="startDate" placeholder="Enter in yyyymmdd format">
+        </div>
+        <div class="col-md-4 md-2">
+          <label for="endDate">End Date</label>
+          <!-- End Date input by user -->
+          <input type="text" [(ngModel)]="endDate" [ngModelOptions]="{standalone: true}" class="form-control"
+            id="endDate" placeholder="Enter in yyyymmdd format">
+        </div>
+      </div>
+      <!-- On "request" button click, function called to fetching appropriate data -->
+      <button (click)="postData()" class="btn btn-primary" id="reqbut" name="answer" value="Show Div">Request</button>
+      <!-- "Div" element hidden "request" button is clicked, and returns data as requested -->
+      <div id="Results" style="display:none;" class="answer_list">
+        <br>
+        <p>Positive Cases on Start Date: {{posCasesStartDate}}</p>
+        <p>Negative Cases on Start Date: {{negCasesStartDate}}</p>
+        <br>
+        <p>Positive Cases on End Date: {{posCasesEndDate}}</p>
+        <p>Negative Cases on End Date: {{negCasesEndDate}}</p>
+        <br>
+        <p>Total Positive Cases between the Dates: {{posEndDate - posStartDate}}</p>
+        <p>Total Negative Cases between the Dates: {{negEndDate - negStartDate}}</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- Footer containing links to profile -->
+<footer class="bg-dark text-secondary px-4 py-5 text-center" id="contact">
+  <div class="col-lg-6 mx-auto pb-4">
+    <a href="#"><i class="fas fa-chevron-up fa-1x"></i></a>
+  </div>
+  <div class="d-grid gap-2 d-sm-flex pb-4 justify-content-sm-center">
+    <a href="https://github.com/Sidharth-Dinesh"><i class="fab fa-github fa-2x"></i></a>
+    <a href="https://www.linkedin.com/in/sidharth-dinesh/"><i class="fab fa-linkedin-in fa-2x"></i></a>
+  </div>
+  <div class="col-lg-6 mx-auto">
+    <br>
+    <br>
+    <p class="mb-4">Copyright © 2023 Sidharth Dinesh</p>
+    <br>
+    <br>
+  </div>
+</footer>

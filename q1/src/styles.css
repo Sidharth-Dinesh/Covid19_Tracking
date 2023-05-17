@@ -1,0 +1,69 @@
+body, html {
+    height: 100%;
+    font-family: 'Alegreya Sans', 'sans-serif';
+    color: lightslategray;
+}
+
+@media(max-width: 768px){
+    #header img{
+        margin: 0 auto;
+    }
+}
+
+#navigation .navbar a:hover{
+    color: #dedede;
+}
+
+a.nav-link,
+footer a {
+    color: #fff;
+}
+
+html.sr .load-hidden {
+    visibility: hidden;
+}
+
+#header {
+    background: url('assets/images/background.jpeg') center center no-repeat;
+    margin-top: 2em;
+    background-size: 80%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: -5em;
+}
+
+#header .h1-title {
+    text-align: center;
+    font-size: 60px;
+    font-weight: bold;
+}
+
+#statistic {
+    padding: 5em;
+}
+
+#statistic .card-text {
+    font-weight: bold;
+    font-size: 50px;
+    color: tomato;
+}
+
+#statistic .card-latest {
+    border-bottom-color: blue;
+    border-bottom-width: 10px;
+}
+
+#statistic .card-totpos {
+    border-bottom-color: red;
+    border-bottom-width: 10px;
+}
+
+#statistic .card-totdeath {
+    border-bottom-color: black;
+    border-bottom-width: 10px;
+}
+
+#contact{
+    margin-top: 50px;
+}
