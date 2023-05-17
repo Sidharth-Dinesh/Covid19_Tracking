@@ -10,5 +10,5 @@ https://api.covidtracking.com/v1/states/az/daily.json
   2.	On post API, the user inputs the name of the state, the start date, and the end date.
   API gets data from the below COVID tracking API and returns the number of positive and negative cases for the state at that particular date.
 
-Also Create a filter to represent the data for different states.
+Also created a filter to represent the data for different states.
 
