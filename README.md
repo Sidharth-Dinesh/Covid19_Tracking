@@ -12,3 +12,8 @@ https://api.covidtracking.com/v1/states/az/daily.json
 
 Also created a filter to represent the data for different states.
 
+Summary:
+• Designed a user interface to show daily COVID cases in US using Angular & TypeScript for client-side programming
+• Developed a C# .NET server side with REST APIs to GET the total cases for any state in the last week
+• Implemented POST APIs with user input to query the positive & negative cases for any state at particular dates
+
