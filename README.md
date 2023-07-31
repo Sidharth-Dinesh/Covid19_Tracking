@@ -1,5 +1,7 @@
 # Covid19_Tracking
 
+<img src="covid_image.PNG" alt="covid_image">
+
 The following is an API for data regarding the no of COVID cases in Arizona.
 https://api.covidtracking.com/v1/states/az/daily.json
 
